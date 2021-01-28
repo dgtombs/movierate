@@ -1,0 +1,16 @@
+.App {
+    margin: 1em;
+}
+
+.main-content {
+  display: flex;
+  flex-flow: row;
+}
+
+.main-content > * {
+  flex-grow: 1;
+}
+
+.main-content > *:nth-child(n+1) {
+  margin-left: 2em;
+}
