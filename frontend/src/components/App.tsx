@@ -3,9 +3,9 @@ import { ColumnsType } from 'antd/lib/table';
 import 'antd/dist/antd.css';
 import React, { useState } from 'react';
 
-import Movie, { Rating, renderRating } from "../domain/Movie";
+import Movie, { renderRating } from '../domain/Movie';
 import './App.css';
-import MovieDetails from "./MovieDetails";
+import MovieDetails from './MovieDetails';
 
 const { Title } = Typography;
 
@@ -16,7 +16,7 @@ const dataSource: Movie[] = [
         year: '2020',
         director: 'David Tombs',
         rating: 3,
-        review: 'My thoughts will go here.'
+        review: "My thoughts will go _here_.\n\nMaybe I'll have more than one paragraph of thoughts."
     },
 ];
 

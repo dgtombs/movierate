@@ -1,8 +1,9 @@
 import { Typography } from 'antd';
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 
 import '../App.css';
-import Movie, { renderRating } from "../../domain/Movie";
+import Movie, { renderRating } from '../../domain/Movie';
 
 const { Text, Title } = Typography;
 
@@ -18,7 +19,7 @@ const MovieDetails: React.FC<Props> = ({ movie }) =>
             <Title level={5}>Director</Title>
             <Text>{movie.director}</Text>
             <Title level={5}>Review</Title>
-            <Text>{movie.review}</Text>
+            <ReactMarkdown>{movie.review}</ReactMarkdown>
         </div>;
 
 export default MovieDetails;
