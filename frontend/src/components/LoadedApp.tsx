@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Table, Typography } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
@@ -50,6 +50,9 @@ const Introduction: React.FC = () => {
 const LoadedApp: React.FC<Props> = ({ moviesData }) => {
     const { config, movies } = moviesData;
     const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+    useEffect(() => {
+        document.title = config.title;
+    });
     return (
         <ConfigContext.Provider value={config}>
             <header><Title>{config.title}</Title></header>
