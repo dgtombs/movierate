@@ -24,6 +24,10 @@ const columns: ColumnsType<Movie> = [
         dataIndex: 'year',
     },
     {
+        title: 'Director',
+        dataIndex: 'director',
+    },
+    {
         title: 'Rating',
         dataIndex: 'rating',
         render: renderRating,
@@ -32,10 +36,10 @@ const columns: ColumnsType<Movie> = [
 
 const Introduction: React.FC = () => {
     const config = useContext(ConfigContext);
-    return <>
+    return <div className={'introduction'}>
         <Title level={2}>Introduction</Title>
         <ReactMarkdown>{config.introduction}</ReactMarkdown>
-    </>;
+    </div>;
 };
 
 /**
@@ -60,9 +64,7 @@ const LoadedApp: React.FC<Props> = ({ moviesData }) => {
                         })}
                     />
                 </div>
-                <div>
-                    {selectedMovie ? <MovieDetails movie={selectedMovie}/> : <Introduction/>}
-                </div>
+                {selectedMovie ? <MovieDetails movie={selectedMovie}/> : <Introduction/>}
             </div>
         </ConfigContext.Provider>
     );

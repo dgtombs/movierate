@@ -8,9 +8,18 @@
 }
 
 .main-content > * {
-  flex-grow: 1;
+  flex: 1;
 }
 
-.main-content > *:nth-child(n+1) {
+.main-content > *:nth-child(n+2) {
   margin-left: 2em;
+}
+
+.movie-list {
+  min-width: 50%;
+}
+
+.main-content > .introduction {
+  /* The introduction should be smaller than the movie list. */
+  flex: 0.8;
 }
