@@ -52,7 +52,7 @@ const LoadedApp: React.FC<Props> = ({ moviesData }) => {
     const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
     return (
         <ConfigContext.Provider value={config}>
-            <Title>{config.title}</Title>
+            <header><Title>{config.title}</Title></header>
             <div className="main-content">
                 <div className="movie-list">
                     <Table
@@ -66,6 +66,10 @@ const LoadedApp: React.FC<Props> = ({ moviesData }) => {
                 </div>
                 {selectedMovie ? <MovieDetails movie={selectedMovie}/> : <Introduction/>}
             </div>
+            <footer>
+                {/* Should I use Ant 'secondary' typography here? I feel it's a little too translucent. */}
+                <a href='https://github.com/dgtombs/movierate' className={'source-repo-link'}><img src='GitHub-Mark-16px.png' alt='GitHub logo' /> Source Code</a>
+            </footer>
         </ConfigContext.Provider>
     );
 };

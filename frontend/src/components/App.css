@@ -23,3 +23,18 @@
   /* The introduction should be smaller than the movie list. */
   flex: 0.8;
 }
+
+.source-repo-link {
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+}
+
+a.source-repo-link {
+  /* Override normal ant style to avoid emphasizing this link. */
+  color: black;
+}
+
+.source-repo-link img {
+  padding-right: 0.3em;
+}
