@@ -1,0 +1,15 @@
+{
+  "config": {
+    "title": "My Movie Ratings",
+    "introduction": "Put some descriptive text about your rating site here.\n\nSupports [Markdown](https://daringfireball.net/projects/markdown/)."
+  },
+  "movies": [
+    {
+      "title": "Sample Movie",
+      "year": "2020",
+      "director": "David Tombs",
+      "rating": 3,
+      "review": "Write your review here. Supports [Markdown](https://daringfireball.net/projects/markdown/)."
+    }
+  ]
+}
