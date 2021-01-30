@@ -39,3 +39,11 @@ website.
 You will have to modify the source if you want to run it at a different path.
 
 Note that you should configure HTTP caching as describe in the [CRA docs](https://create-react-app.dev/docs/production-build/).
+
+### Movie Database
+
+A dummy `api/movies.json` file is included.
+Replace this file with your own reviews or, if you want to be fancy, create a dynamic
+database-backed endpoint here which serves the same JSON format.
+
+Note that this JSON document also contains basic app configuration.

@@ -5,7 +5,7 @@ interface Movie {
     rating: Rating;
     // If present, overrides the default text for the rating.
     ratingText?: string;
-    // Just text for now, Markdown format will be supported soon.
+    // Markdown supported here.
     review: string;
 }
 

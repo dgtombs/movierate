@@ -1,70 +1,35 @@
-import { Table, Typography } from 'antd';
-import { ColumnsType } from 'antd/lib/table';
+import { Spin } from 'antd';
 import 'antd/dist/antd.css';
 import React, { useState } from 'react';
 
-import Movie, { renderRating } from '../domain/Movie';
 import './App.css';
-import MovieDetails from './MovieDetails';
+import LoadedApp from './LoadedApp';
+import { getMovies, MoviesResponse } from '../api/api';
 
-const { Title } = Typography;
+const App: React.FC = () => {
+    const [loading, setLoading] = useState<boolean>(true);
+    const [moviesResponse, setMoviesResponse] = useState<MoviesResponse|null>(null);
 
-// Just include some sample data for now until we start loading ratings from the server.
-const dataSource: Movie[] = [
-    {
-        title: 'Sample Movie',
-        year: '2020',
-        director: 'David Tombs',
-        rating: 3,
-        review: "My thoughts will go _here_.\n\nMaybe I'll have more than one paragraph of thoughts."
-    },
-];
+    if (!moviesResponse) {
+        getMovies().then(response => {
+            setMoviesResponse(response);
+        }).finally(() => {
+            // Whether we succeeded or failed, we're done loading.
+            setLoading(false)
+        });
+    }
 
-const columns: ColumnsType<Movie> = [
-    {
-        title: 'Title',
-        dataIndex: 'title',
-    },
-    {
-        title: 'Year',
-        dataIndex: 'year',
-    },
-    {
-        title: 'Rating',
-        dataIndex: 'rating',
-        render: renderRating,
-    },
-];
-
-const Introduction: React.FC = () =>
-    <>
-        <Title level={2}>Introduction</Title>
-        <p>When you first load the page, some introductory text appears here.</p>
-        <p>When you select a movie, its details will appear here.</p>
-    </>;
-
-function App() {
-    const [selectedMovie, setSelectedMovie] = useState<Movie|null>(null);
     return (
         <div className="App">
-            <Title>Movies Good, Bad, and Ugly</Title>
-            <div className="main-content">
-                <div className="movie-list">
-                    <Table
-                        columns={columns}
-                        dataSource={dataSource}
-                        rowKey={(record => record.title + record.year)}
-                        onRow={record => ({
-                            onClick: () => setSelectedMovie(record),
-                        })}
-                    />
-                </div>
-                <div>
-                    {selectedMovie ? <MovieDetails movie={selectedMovie} /> : <Introduction/>}
-                </div>
-            </div>
+            {loading ?
+                <><Spin/> Loading...</> :
+                // If we finished loading but `movies` is null, that means we failed to load the movies.
+                moviesResponse ?
+                    <LoadedApp moviesData={moviesResponse} /> :
+                    <>Unable to load movie database. Please contact the site owner.</>
+            }
         </div>
     );
-}
+};
 
 export default App;
