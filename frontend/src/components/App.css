@@ -15,10 +15,6 @@
   margin-left: 2em;
 }
 
-.movie-list {
-  min-width: 50%;
-}
-
 .main-content > .introduction {
   /* The introduction should be smaller than the movie list. */
   flex: 0.8;

@@ -23,11 +23,11 @@ export const DEFAULT_RATING_TEXTS = {
 };
 
 /**
- * Renders a rating as text.
+ * Renders the movie rating as text.
  *
- * @param rating
+ * @param movie
  */
-export const renderRating = (rating: Rating): string =>
-    String(rating) + '/5: ' + DEFAULT_RATING_TEXTS[rating];
+export const renderRating = (movie: Movie): string =>
+    String(movie.rating) + '/5: ' + (movie.ratingText || DEFAULT_RATING_TEXTS[movie.rating]);
 
 export default Movie;

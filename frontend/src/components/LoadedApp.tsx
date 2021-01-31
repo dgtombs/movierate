@@ -10,6 +10,10 @@ import ConfigContext from './ConfigContext';
 
 const { Title } = Typography;
 
+export const TestIds = {
+    movieListTable: 'movie-list-table',
+};
+
 export interface Props {
     moviesData: MoviesResponse;
 }
@@ -30,7 +34,7 @@ const columns: ColumnsType<Movie> = [
     {
         title: 'Rating',
         dataIndex: 'rating',
-        render: renderRating,
+        render: (_, movie) => renderRating(movie),
     },
 ];
 
@@ -59,6 +63,7 @@ const LoadedApp: React.FC<Props> = ({ moviesData }) => {
             <div className="main-content">
                 <div className="movie-list">
                     <Table
+                        data-testid={TestIds.movieListTable}
                         columns={columns}
                         dataSource={movies}
                         rowKey={(record => record.title + record.year)}
