@@ -1,4 +1,5 @@
-import { Typography } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
+import { Button, Typography } from 'antd';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
@@ -10,11 +11,16 @@ const { Text, Title } = Typography;
 
 export interface Props {
     movie: Movie;
+    // Called when the user clicks the close button.
+    onClose: () => void;
 }
 
-const MovieDetails: React.FC<Props> = ({ movie }) =>
+const MovieDetails: React.FC<Props> = ({ movie, onClose }) =>
         <div className={'movie-details'}>
-            <Title level={2}>{movie.title} ({movie.year})</Title>
+            <header>
+                <Title level={2}>{movie.title} ({movie.year})</Title>
+                <Button type={'text'} className={'close-button'} onClick={onClose}><CloseOutlined /></Button>
+            </header>
             <Title level={5}>Rating</Title>
             <Text>{renderRating(movie)}</Text>
             <Title level={5}>Director</Title>

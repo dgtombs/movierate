@@ -64,6 +64,9 @@ const LoadedApp: React.FC<Props> = ({ moviesData }) => {
     useEffect(() => {
         document.title = config.title;
     });
+    const closeMovie = () => {
+        setSelectedMovie(null);
+    };
     return (
         <ConfigContext.Provider value={config}>
             <header><Title>{config.title}</Title></header>
@@ -79,7 +82,7 @@ const LoadedApp: React.FC<Props> = ({ moviesData }) => {
                         })}
                     />
                 </div>
-                {selectedMovie ? <MovieDetails movie={selectedMovie}/> : <Introduction/>}
+                {selectedMovie ? <MovieDetails movie={selectedMovie} onClose={closeMovie} /> : <Introduction/>}
             </div>
             <footer>
                 {/* Should I use Ant 'secondary' typography here? I feel it's a little too translucent. */}
