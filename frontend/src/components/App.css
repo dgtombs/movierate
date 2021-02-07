@@ -20,6 +20,13 @@
   flex: 0.8;
 }
 
+/*
+ * Right-align review dates as I think they're more readable that way (at least in US locale).
+ */
+.movie-list td.review-date-column {
+  text-align: right;
+}
+
 .source-repo-link {
   display: flex;
   align-items: center;

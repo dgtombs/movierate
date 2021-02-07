@@ -2,6 +2,9 @@ interface Movie {
     title: string;
     year: string;
     director: string;
+    // Date of the rating on YYYY-MM-DD format.
+    // I leave it in this format since it is sortable.
+    rateDate: string;
     rating: Rating;
     // If present, overrides the default text for the rating.
     ratingText?: string;

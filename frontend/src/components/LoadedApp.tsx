@@ -7,6 +7,7 @@ import Movie, { renderRating } from '../domain/Movie';
 import MovieDetails from './MovieDetails';
 import { MoviesResponse } from '../api/api';
 import ConfigContext from './ConfigContext';
+import moment from 'moment';
 
 const { Title } = Typography;
 
@@ -36,6 +37,12 @@ const columns: ColumnsType<Movie> = [
         dataIndex: 'rating',
         render: (_, movie) => renderRating(movie),
     },
+    {
+        title: 'Review Date',
+        className: 'review-date-column',
+        dataIndex: 'rateDate',
+        render: rateDate => moment(rateDate).format('l'),
+    }
 ];
 
 const Introduction: React.FC = () => {

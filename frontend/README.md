@@ -65,3 +65,6 @@ Note that this JSON document also contains basic app configuration.
   I also use this at work.
   I'm bad at creating attractive websites but Ant Design helps.
   It's very feature-rich and a pleasure to use.
+* [Moment.js](https://momentjs.com/) -
+  I'd like to try a more modern Date/Time library, but Ant Design already uses Moment.
+  The API may have it's issues, but it's a lot better than using native Dates!

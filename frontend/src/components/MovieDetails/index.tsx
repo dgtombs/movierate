@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 
 import '../App.css';
 import Movie, { renderRating } from '../../domain/Movie';
+import moment from 'moment';
 
 const { Text, Title } = Typography;
 
@@ -20,6 +21,7 @@ const MovieDetails: React.FC<Props> = ({ movie }) =>
             <Text>{movie.director}</Text>
             <Title level={5}>Review</Title>
             <ReactMarkdown>{movie.review}</ReactMarkdown>
+            <Text type={'secondary'}>Reviewed {moment(movie.rateDate).format('LL')}.</Text>
         </div>;
 
 export default MovieDetails;
