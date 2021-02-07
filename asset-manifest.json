@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/movierate/static/css/main.b64842eb.chunk.css",
-    "main.js": "/movierate/static/js/main.d8ed6cef.chunk.js",
-    "main.js.map": "/movierate/static/js/main.d8ed6cef.chunk.js.map",
-    "runtime-main.js": "/movierate/static/js/runtime-main.aafe5ef4.js",
-    "runtime-main.js.map": "/movierate/static/js/runtime-main.aafe5ef4.js.map",
+    "main.css": "/movierate/static/css/main.d7c15ae5.chunk.css",
+    "main.js": "/movierate/static/js/main.3e616958.chunk.js",
+    "main.js.map": "/movierate/static/js/main.3e616958.chunk.js.map",
+    "runtime-main.js": "/movierate/static/js/runtime-main.1d6cb0f0.js",
+    "runtime-main.js.map": "/movierate/static/js/runtime-main.1d6cb0f0.js.map",
     "static/css/2.f3f01324.chunk.css": "/movierate/static/css/2.f3f01324.chunk.css",
-    "static/js/2.ea01cb1b.chunk.js": "/movierate/static/js/2.ea01cb1b.chunk.js",
-    "static/js/2.ea01cb1b.chunk.js.map": "/movierate/static/js/2.ea01cb1b.chunk.js.map",
-    "static/js/3.7526d998.chunk.js": "/movierate/static/js/3.7526d998.chunk.js",
-    "static/js/3.7526d998.chunk.js.map": "/movierate/static/js/3.7526d998.chunk.js.map",
+    "static/js/2.a7c5414e.chunk.js": "/movierate/static/js/2.a7c5414e.chunk.js",
+    "static/js/2.a7c5414e.chunk.js.map": "/movierate/static/js/2.a7c5414e.chunk.js.map",
+    "static/js/3.30ce763a.chunk.js": "/movierate/static/js/3.30ce763a.chunk.js",
+    "static/js/3.30ce763a.chunk.js.map": "/movierate/static/js/3.30ce763a.chunk.js.map",
     "index.html": "/movierate/index.html",
     "static/css/2.f3f01324.chunk.css.map": "/movierate/static/css/2.f3f01324.chunk.css.map",
-    "static/css/main.b64842eb.chunk.css.map": "/movierate/static/css/main.b64842eb.chunk.css.map",
-    "static/js/2.ea01cb1b.chunk.js.LICENSE.txt": "/movierate/static/js/2.ea01cb1b.chunk.js.LICENSE.txt"
+    "static/css/main.d7c15ae5.chunk.css.map": "/movierate/static/css/main.d7c15ae5.chunk.css.map",
+    "static/js/2.a7c5414e.chunk.js.LICENSE.txt": "/movierate/static/js/2.a7c5414e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.aafe5ef4.js",
+    "static/js/runtime-main.1d6cb0f0.js",
     "static/css/2.f3f01324.chunk.css",
-    "static/js/2.ea01cb1b.chunk.js",
-    "static/css/main.b64842eb.chunk.css",
-    "static/js/main.d8ed6cef.chunk.js"
+    "static/js/2.a7c5414e.chunk.js",
+    "static/css/main.d7c15ae5.chunk.css",
+    "static/js/main.3e616958.chunk.js"
   ]
 }

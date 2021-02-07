@@ -8,14 +8,17 @@
       "title": "Sample Movie",
       "year": "2020",
       "director": "David Tombs",
+      "rateDate": "2020-12-31",
       "rating": 3,
       "review": "Write your review here. Supports [Markdown](https://daringfireball.net/projects/markdown/)."
     },
     {
-      "title": "Another Movie",
+      "title": "Movie With a Longer Title",
       "year": "2021",
       "director": "Joe Smith",
+      "rateDate": "2021-01-01",
       "rating": 2,
+      "ratingText": "Bad (with a note)",
       "review": "Started badly, got better."
     }
   ]
