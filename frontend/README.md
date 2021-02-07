@@ -47,3 +47,21 @@ Replace this file with your own reviews or, if you want to be fancy, create a dy
 database-backed endpoint here which serves the same JSON format.
 
 Note that this JSON document also contains basic app configuration.
+
+## Technologies Used
+
+* [React](https://reactjs.org/) -
+  I use React at work and am a big fan.
+  See [the ThoughtWorks Tech Radar entry](https://www.thoughtworks.com/radar/languages-and-frameworks/react-js) for what
+  makes React special.
+* [Create React App](https://create-react-app.dev/) -
+  I'm not a fan of CRA's bloat (1,900 packages installed!) but it sure does make things easy, and I do appreciate its
+  encapsulation of best practices.
+  It's hard to keep up with JS build and packaging tools.
+* [TypeScript](https://www.typescriptlang.org/) -
+  Using TypeScript instead of raw JavaScript does cause some friction, but I think the benefits of compile-time checking
+  absolutely pay off.
+* [Ant Design](https://ant.design/docs/react/introduce) -
+  I also use this at work.
+  I'm bad at creating attractive websites but Ant Design helps.
+  It's very feature-rich and a pleasure to use.
