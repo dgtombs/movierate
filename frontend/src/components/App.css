@@ -27,6 +27,10 @@
   text-align: right;
 }
 
+.movie-list td.rating-column {
+  white-space: nowrap;
+}
+
 .movie-details > header {
   display: flex;
   justify-content: space-between;

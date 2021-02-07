@@ -19,32 +19,6 @@ export interface Props {
     moviesData: MoviesResponse;
 }
 
-const columns: ColumnsType<Movie> = [
-    {
-        title: 'Title',
-        dataIndex: 'title',
-    },
-    {
-        title: 'Year',
-        dataIndex: 'year',
-    },
-    {
-        title: 'Director',
-        dataIndex: 'director',
-    },
-    {
-        title: 'Rating',
-        dataIndex: 'rating',
-        render: (_, movie) => renderRating(movie),
-    },
-    {
-        title: 'Review Date',
-        className: 'review-date-column',
-        dataIndex: 'rateDate',
-        render: rateDate => moment(rateDate).format('l'),
-    }
-];
-
 const Introduction: React.FC = () => {
     const config = useContext(ConfigContext);
     return <div className={'introduction'}>
@@ -67,6 +41,39 @@ const LoadedApp: React.FC<Props> = ({ moviesData }) => {
     const closeMovie = () => {
         setSelectedMovie(null);
     };
+
+    const columns: ColumnsType<Movie> = [
+        {
+            title: 'Title',
+            dataIndex: 'title',
+        },
+        {
+            title: 'Year',
+            dataIndex: 'year',
+        },
+        {
+            title: 'Director',
+            dataIndex: 'director',
+        },
+        {
+            title: 'Rating',
+            className: 'rating-column',
+            dataIndex: 'rating',
+            render: (_, movie) => renderRating(movie),
+        },
+        {
+            title: 'Review Date',
+            className: 'review-date-column',
+            dataIndex: 'rateDate',
+            render: rateDate => moment(rateDate).format('l'),
+        }
+    ];
+    // Don't show the Director column if we have a movie selected.
+    // Since the movie details panel is wider, it makes the list too crowded when it is open.
+    if (selectedMovie) {
+        columns.splice(2, 1);
+    }
+
     return (
         <ConfigContext.Provider value={config}>
             <header><Title>{config.title}</Title></header>
