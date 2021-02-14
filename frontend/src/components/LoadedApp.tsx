@@ -2,12 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Table, Typography } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
+import moment from 'moment';
 
 import Movie, { renderRating } from '../domain/Movie';
-import MovieDetails from './MovieDetails';
 import { MoviesResponse } from '../api/api';
+import { stringSorter } from '../utils/sorting';
 import ConfigContext from './ConfigContext';
-import moment from 'moment';
+import MovieDetails from './MovieDetails';
 
 const { Title } = Typography;
 
@@ -46,10 +47,13 @@ const LoadedApp: React.FC<Props> = ({ moviesData }) => {
         {
             title: 'Title',
             dataIndex: 'title',
+            sorter: (a, b) => stringSorter(a.title, b.title),
         },
         {
             title: 'Year',
             dataIndex: 'year',
+            defaultSortOrder: 'ascend',
+            sorter: (a, b) => stringSorter(a.year, b.year),
         },
         {
             title: 'Director',
@@ -60,12 +64,14 @@ const LoadedApp: React.FC<Props> = ({ moviesData }) => {
             className: 'rating-column',
             dataIndex: 'rating',
             render: (_, movie) => renderRating(movie),
+            sorter: (a, b) => b.rating - a.rating,
         },
         {
             title: 'Review Date',
             className: 'review-date-column',
             dataIndex: 'rateDate',
             render: rateDate => moment(rateDate).format('l'),
+            sorter: (a, b) => stringSorter(a.rateDate, b.rateDate),
         }
     ];
     // Don't show the Director column if we have a movie selected.

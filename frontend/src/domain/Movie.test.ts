@@ -1,12 +1,18 @@
 import Movie, { renderRating } from './Movie';
 
-export const makeMovie = (): Movie => ({
-    title: 'Test Movie Title',
-    year: '1990',
-    rating: 1,
-    director: 'Jest',
-    review: '',
-});
+/**
+ * Returns a new Movie object with the given properties.
+ * Any properties not provided will have sensible defaults.
+ */
+export const makeMovie = (properties: Partial<Movie> = {}): Movie =>
+    Object.assign({
+        title: 'Test Movie Title',
+        year: '1990',
+        rating: 1,
+        rateDate: '2021-01-01',
+        director: 'Jest',
+        review: '',
+    }, properties);
 
 describe('renderRating', () => {
     it('returns correct string for a normal rating', () => {

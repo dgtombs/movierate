@@ -1,5 +1,5 @@
 import React from 'react';
-import {getByText, render, screen} from '@testing-library/react';
+import { fireEvent, getAllByRole, getByRole, getByText, render, screen, waitFor } from '@testing-library/react';
 import { MoviesResponse } from '../api/api';
 import Config from '../domain/Config';
 import LoadedApp, { TestIds } from './LoadedApp';
@@ -30,14 +30,50 @@ const makeConfig = (): Config => ({
 
 const makeMoviesData = (): MoviesResponse => ({
   config: makeConfig(),
-  movies: [makeMovie()],
+  movies: [
+    makeMovie({
+      title: 'Movie One',
+      year: '1950',
+    }),
+    makeMovie({
+      title: 'Movie Two',
+      year: '1940',
+    })
+  ],
 });
 
-test('renders', () => {
-  const moviesData = makeMoviesData();
-  const movie = makeMovie();
-  render(<LoadedApp moviesData={moviesData} />);
-  const movieListTable = screen.getByTestId(TestIds.movieListTable);
-  expect(getByText(movieListTable, movie.title)).toBeInTheDocument();
-  expect(getByText(movieListTable, renderRating(movie))).toBeInTheDocument();
+
+const assertDefaultOrder = (moviesData: MoviesResponse, movieListTable: HTMLElement) => {
+  const movie1 = moviesData.movies[0];
+  const movie2 = moviesData.movies[1];
+  const rows = getAllByRole(movieListTable, 'row');
+  expect(rows.length).toEqual(3); // 1 header, 2 body
+  // Movie Two should actually come first: the default sorting is by year ascending.
+  expect(getByText(rows[1], movie2.title)).toBeInTheDocument();
+  expect(getByText(rows[1], renderRating(movie2))).toBeInTheDocument();
+  expect(getByText(rows[2], movie1.title)).toBeInTheDocument();
+};
+
+const assertSortedByTitle = (moviesData: MoviesResponse, movieListTable: HTMLElement) => {
+  const movie1 = moviesData.movies[0];
+  const movie2 = moviesData.movies[1];
+  const rows = getAllByRole(movieListTable, 'row');
+  expect(rows.length).toEqual(3); // 1 header, 2 body
+  expect(getByText(rows[1], movie1.title)).toBeInTheDocument();
+  expect(getByText(rows[2], movie2.title)).toBeInTheDocument();
+};
+
+describe('<LoadedApp>', () => {
+  it('renders table in proper order', async () => {
+    const moviesData = makeMoviesData();
+    render(<LoadedApp moviesData={moviesData} />);
+    const movieListTable = screen.getByTestId(TestIds.movieListTable);
+    assertDefaultOrder(moviesData, movieListTable);
+
+    // Now sort by title.
+    fireEvent.click(getByRole(movieListTable, 'columnheader', { name: /Title/ }));
+    await waitFor(() => {
+      assertSortedByTitle(moviesData, movieListTable);
+    });
+  });
 });
