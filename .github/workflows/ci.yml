@@ -24,12 +24,9 @@ jobs:
         cache: 'npm'
         cache-dependency-path: frontend/package-lock.json
     - name: Upgrade npm version
-      # Using npm 8 since it's better than what ships with Node 12 (npm 6) but 9 requires
-      # Node 14 minimum.
-      #
-      # Also, upgrading npm after setup-node is non-ideal because the latter actually uses npm (for the caching part).
+      # Upgrading npm after setup-node is non-ideal because the latter actually uses npm (for the caching part).
       # But I don't know a better option right now.
-      run: npm install -g npm@8
+      run: npm install -g npm@9
     - run: npm --version
     - run: npm ci
     - run: npm run build --if-present
