@@ -3,10 +3,11 @@ import { fireEvent, getAllByRole, getByRole, getByText, render, screen, waitFor 
 import { MoviesResponse } from '../api/api';
 import Config from '../domain/Config';
 import LoadedApp, { TestIds } from './LoadedApp';
+import { TestIds as MovieDetailsTestIds } from './MovieDetails';
 import { makeMovie } from '../domain/Movie.test';
 import { renderRating } from '../domain/Movie';
 
-// Mock window.matchMedia not implemented by JSDOM.
+// Mock window.matchMedia not implemented by JSDOM but required by antd.
 // See https://jestjs.io/docs/en/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom
 // I suppose that I will need to move this to a common file.
 Object.defineProperty(window, 'matchMedia', {
@@ -34,10 +35,12 @@ const makeMoviesData = (): MoviesResponse => ({
     makeMovie({
       title: 'Movie One',
       year: '1950',
+      review: 'Movie One was OK',
     }),
     makeMovie({
       title: 'Movie Two',
       year: '1940',
+      review: 'Movie Two was so cool',
     })
   ],
 });
@@ -74,6 +77,50 @@ describe('<LoadedApp>', () => {
     fireEvent.click(getByRole(movieListTable, 'columnheader', { name: /Title/ }));
     await waitFor(() => {
       assertSortedByTitle(moviesData, movieListTable);
+    });
+  });
+
+  it('opens and closes details pane', async () => {
+    // Arrange
+    const moviesData = makeMoviesData();
+    const movie1 = moviesData.movies[0];
+    const movie2 = moviesData.movies[1];
+    render(<LoadedApp moviesData={moviesData} />);
+
+    const expectNoMovie1 = () => {
+      expect(screen.queryByText(movie1.review)).toBeNull();
+    };
+    const expectNoMovie2 = () => {
+      expect(screen.queryByText(movie2.review)).toBeNull();
+    };
+    const expectMovie1 = () => {
+      screen.getByText(movie1.review);
+    };
+    const expectMovie2 = () => {
+      screen.getByText(movie2.review);
+    };
+
+    // Act & Assert
+    screen.getByText(moviesData.config.introduction);
+
+    expectNoMovie1();
+    expectNoMovie2();
+    fireEvent.click(screen.getByRole('cell', { name: movie1.title }));
+
+    await waitFor(() => {
+      expectMovie1();
+      expectNoMovie2();
+    });
+    fireEvent.click(screen.getByRole('cell', { name: movie2.title }));
+    await waitFor(() => {
+      expectMovie2();
+      expectNoMovie1();
+    });
+    // Is there a way to find this control other than by testid?
+    fireEvent.click(screen.getByTestId(MovieDetailsTestIds.closeButton));
+    await waitFor(() => {
+      expectNoMovie1();
+      expectNoMovie2();
     });
   });
 });

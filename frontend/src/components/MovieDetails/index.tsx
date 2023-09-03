@@ -15,11 +15,17 @@ export interface Props {
     onClose: () => void;
 }
 
+export const TestIds = {
+    closeButton: 'close-button',
+}
+
 const MovieDetails: React.FC<Props> = ({ movie, onClose }) =>
         <div className={'movie-details'}>
             <header>
                 <Title level={2}>{movie.title} ({movie.year})</Title>
-                <Button type={'text'} className={'close-button'} onClick={onClose}><CloseOutlined /></Button>
+                <Button type={'text'} className={'close-button'} data-testid={TestIds.closeButton} onClick={onClose}>
+                    <CloseOutlined />
+                </Button>
             </header>
             <Title level={5}>Rating</Title>
             <Text>{renderRating(movie)}</Text>
