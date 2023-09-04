@@ -17,7 +17,7 @@ export interface Props {
 
 export const TestIds = {
     closeButton: 'close-button',
-}
+};
 
 const MovieDetails: React.FC<Props> = ({ movie, onClose }) =>
         <div className={'movie-details'}>

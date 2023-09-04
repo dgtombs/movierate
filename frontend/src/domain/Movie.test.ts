@@ -11,7 +11,7 @@ export const makeMovie = (properties: Partial<Movie> = {}): Movie =>
         rating: 1,
         rateDate: '2021-01-01',
         director: 'Jest',
-        review: '',
+        review: 'This is a review.',
     }, properties);
 
 describe('renderRating', () => {
